@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan Martínez | Tech Lead & ITIL Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0e27;
+            color: #00ff41;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .terminal-header {
+            background: #1a1f3a;
+            border: 2px solid #00ff41;
+            border-radius: 8px 8px 0 0;
+            padding: 10px 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-close { background: #ff5f56; }
+        .btn-minimize { background: #ffbd2e; }
+        .btn-maximize { background: #27c93f; }
+
+        .terminal-body {
+            background: #0d1117;
+            border: 2px solid #00ff41;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .prompt {
+            color: #58a6ff;
+            margin-right: 10px;
+        }
+
+        .comment {
+            color: #8b949e;
+        }
+
+        .keyword {
+            color: #ff7b72;
+        }
+
+        .string {
+            color: #a5d6ff;
+        }
+
+        .function {
+            color: #d2a8ff;
+        }
+
+        .variable {
+            color: #ffa657;
+        }
+
+        h1 {
+            color: #00ff41;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+
+        h2 {
+            color: #58a6ff;
+            font-size: 1.8em;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid #00ff41;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: #ffa657;
+            font-size: 1.3em;
+            margin: 20px 0 10px;
+        }
+
+        .header-section {
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            padding: 10px;
+            background: rgba(0, 255, 65, 0.05);
+            border-left: 3px solid #00ff41;
+            border-radius: 4px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .skill-category {
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid #58a6ff;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .skill-category h4 {
+            color: #ffa657;
+            margin-bottom: 10px;
+        }
+
+        .skill-item {
+            color: #a5d6ff;
+            padding: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .experience-item {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 166, 87, 0.05);
+            border-left: 4px solid #ffa657;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 166, 87, 0.1);
+            transform: translateX(5px);
+        }
+
+        .job-title {
+            color: #d2a8ff;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .company {
+            color: #58a6ff;
+            font-size: 1.1em;
+        }
+
+        .date {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .responsibilities {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .responsibilities li {
+            color: #a5d6ff;
+            margin: 5px 0;
+            list-style: none;
+            position: relative;
+        }
+
+        .responsibilities li:before {
+            content: "▹";
+            color: #00ff41;
+            position: absolute;
+            left: -20px;
+        }
+
+        .code-line {
+            margin: 8px 0;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .education-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(210, 168, 255, 0.05);
+            border-left: 3px solid #d2a8ff;
+            border-radius: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #8b949e;
+            border-top: 2px solid #00ff41;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            .terminal-body {
+                padding: 15px;
+            }
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            margin: 3px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            border-radius: 3px;
+            font-size: 0.85em;
+            color: #00ff41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="terminal-header">
+            <div class="terminal-btn btn-close"></div>
+            <div class="terminal-btn btn-minimize"></div>
+            <div class="terminal-btn btn-maximize"></div>
+            <span style="margin-left: 10px; color: #8b949e;">bryan@portfolio:~$</span>
+        </div>
+        
+        <div class="terminal-body">
+            <div class="code-line comment">// Inicializando perfil profesional...</div>
+            <div class="code-line"><span class="keyword">const</span> <span class="variable">developer</span> = <span class="keyword">new</span> <span class="function">TechLead</span>() <span class="blink">_</span></div>
+            
+            <div class="header-section">
+                <h1>Bryan Steven Martínez Ramírez</h1>
+                <div class="code-line">
+                    <span class="keyword">class</span> <span class="function">TechLead</span> <span class="keyword">extends</span> <span class="function">ITILExpert</span> {
+                </div>
+                <div class="code-line" style="margin-left: 20px;">
+                    <span class="variable">role</span>: <span class="string">"Líder de Soporte Técnico"</span>
+                </div>
+                <div class="code-line" style="margin-left: 20px;">
+                    <span class="variable">specialization</span>: [<span class="string">"ITIL"</span>, <span class="string">"Server Monitoring"</span>, <span class="string">"Ruby on Rails"</span>]
+                </div>
+                <div class="code-line">}</div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="keyword">📍</span> Bogotá, Colombia<br>
+                        <span class="comment">Cra 11 # 27a - 97 sur, piso 3</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="keyword">📞</span> 324 346 37171
+                    </div>
+                    <div class="contact-item">
+                        <span class="keyword">📧</span> bryansmr10@gmail.com
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-line comment">/* ========== PERFIL PROFESIONAL ========== */</div>
+            <div class="code-line">
+                <span class="keyword">function</span> <span class="function">getProfile</span>() {
+            </div>
+            <div style="margin-left: 20px; color: #a5d6ff; padding: 15px 0;">
+                Persona proactiva con conocimientos en gestión ITIL, implementación de procesos y plataformas de monitoreo de servidores. Enfoque en calidad de servicio, mejora continua y liderazgo de equipos técnicos; experiencia resolviendo incidencias complejas y optimizando flujos con KPIs.
+            </div>
+            <div class="code-line">}</div>
+
+            <h2>// SKILLS & TECHNOLOGIES</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Core Skills</h4>
+                    <div class="skill-item">✓ ITIL / Procesos</div>
+                    <div class="skill-item">✓ Monitoreo de Servidores</div>
+                    <div class="skill-item">✓ Ruby on Rails</div>
+                    <div class="skill-item">✓ SQL / Bases de Datos</div>
+                    <div class="skill-item">✓ Windows / iOS</div>
+                    <div class="skill-item">✓ Service Manager</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Tools & Platforms</h4>
+                    <div class="skill-item">◆ MongoDB</div>
+                    <div class="skill-item">◆ Zoho CRM</div>
+                    <div class="skill-item">◆ Jira / Confluence</div>
+                    <div class="skill-item">◆ Scrum Master</div>
+                    <div class="skill-item">◆ Git / GitHub</div>
+                    <div class="skill-item">◆ AI Tools</div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    <div class="skill-item">🌎 Español - Nativo</div>
+                    <div class="skill-item">🌍 Inglés</div>
+                </div>
+            </div>
+
+            <h2>// EXPERIENCIA PROFESIONAL</h2>
+            
+            <div class="experience-item">
+                <div class="job-title">Líder Soporte Técnico</div>
+                <div class="company">Digital Platforms Colombia (Picap)</div>
+                <div class="date">Febrero 2023 – Actualidad</div>
+                <ul class="responsibilities">
+                    <li>Liderazgo de equipo y aseguramiento de tiempos de respuesta</li>
+                    <li>Acompañamiento técnico, métricas/KPIs y mejora continua</li>
+                    <li>Especialidad en Ruby on Rails para soporte y optimización</li>
+                </ul>
+                <div style="margin-top: 10px;">
+                    <span class="tag">Ruby on Rails</span>
+                    <span class="tag">KPIs</span>
+                    <span class="tag">Liderazgo</span>
+                    <span class="tag">ITIL</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Soporte Técnico Experto</div>
+                <div class="company">Hospital Universitario San Ignacio</div>
+                <div class="date">Diciembre 2021 – Septiembre 2022</div>
+                <ul class="responsibilities">
+                    <li>Instalación/configuración de aplicaciones y diagnóstico HW/SW</li>
+                    <li>Gestión de accesos, informes y soporte a usuarios (iOS/Windows)</li>
+                </ul>
+                <div style="margin-top: 10px;">
+                    <span class="tag">Windows</span>
+                    <span class="tag">iOS</span>
+                    <span class="tag">Hardware</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Gestor Junior TI</div>
+                <div class="company">Nexa BPO</div>
+                <div class="date">Octubre 2021 – Enero 2022</div>
+                <ul class="responsibilities">
+                    <li>Gestión de usuarios y mesa de ayuda; soporte en sitio</li>
+                    <li>Atención de incidentes y requerimientos</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Monitoreo de Servidores IRE Windows - Claro</div>
+                <div class="company">Indra Colombia S.A</div>
+                <div class="date">Febrero 2020 – Septiembre 2020</div>
+                <ul class="responsibilities">
+                    <li>Monitoreo de servidores y gestión de alarmas; revisión de clústeres</li>
+                    <li>Incidentes vía Service Manager; SQL (capacidad de disco, failovers)</li>
+                </ul>
+                <div style="margin-top: 10px;">
+                    <span class="tag">Service Manager</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Monitoreo</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Soporte de Desarrollo</div>
+                <div class="company">Proyecto Gas Natural - Indra Colombia S.A</div>
+                <div class="date">Enero 2020 – Febrero 2020</div>
+                <ul class="responsibilities">
+                    <li>Soporte a aplicaciones (Avas natural), monitoreo SQL y scripting</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Gestor de Calidad</div>
+                <div class="company">Proyecto SENA - Indra Sistemas S.A</div>
+                <div class="date">Noviembre 2019 – Diciembre 2019</div>
+                <ul class="responsibilities">
+                    <li>Mejora del servicio; cumplimiento de requisitos y estándares</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Gestor Documental</div>
+                <div class="company">Proyecto Seguros del Estado - Indra Colombia S.A</div>
+                <div class="date">Septiembre 2018 – Noviembre 2019</div>
+                <ul class="responsibilities">
+                    <li>Levantamiento de procesos y procedimientos; alcance frente al cliente</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Analista de Repuestos</div>
+                <div class="company">Proyecto SENA - Indra Sistemas S.A</div>
+                <div class="date">Mayo – Julio 2018</div>
+                <ul class="responsibilities">
+                    <li>Gestión de inventarios; cumplimiento ITIL v3 y backups</li>
+                    <li>Disponibilidad de repuestos e insumos para continuidad</li>
+                </ul>
+            </div>
+
+            <h2>// EDUCACIÓN</h2>
+            
+            <div class="education-item">
+                <div class="job-title">Ingeniería de Sistemas</div>
+                <div class="company">Universidad San José (Institucional)</div>
+                <div class="date">2024 – Actualidad</div>
+            </div>
+
+            <div class="education-item">
+                <div class="job-title">Diplomado en Full Stack y Aplicaciones Híbridas</div>
+                <div class="company">Universidad Colombo Germana, Bogotá</div>
+                <div class="date">2018</div>
+            </div>
+
+            <div class="education-item">
+                <div class="job-title">Técnico en Sistemas</div>
+                <div class="company">Academia Nacional de Aprendizaje, Bogotá</div>
+                <div class="date">2018</div>
+            </div>
+
+            <div class="education-item">
+                <div class="job-title">Bachiller Académico</div>
+                <div class="company">Centro de educación adultos cultural, Bogotá</div>
+                <div class="date">2013</div>
+            </div>
+
+            <div class="code-line comment" style="margin-top: 50px;">/* ========== END OF FILE ========== */</div>
+            <div class="code-line"><span class="keyword">export default</span> developer;</div>
+
+            <div class="footer">
+                <p>© 2025 Bryan Martínez | Tech Lead & ITIL Expert</p>
+                <p class="comment">Compilado con pasión por la tecnología 🚀</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
